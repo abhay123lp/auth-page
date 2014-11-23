@@ -1,0 +1,1 @@
+java -jar ../../hsqldb/lib/sqltool.jar

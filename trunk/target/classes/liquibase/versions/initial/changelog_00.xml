@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+	<changeSet id="create_table_users_22112014" author="velikanova_alenka">
+		<createTable tableName="USERS">
+			<column name="USERS_ID" type="int" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="USERS_LOGIN" type="varchar(32)">
+				<constraints nullable="false" />
+			</column>
+			<column name="USERS_PASSWORD" type="varchar(64)">
+				<constraints nullable="false" />
+			</column>
+			<column name="USERS_SALT" type="varchar(16)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="add_uq_to_users_22112014" author="velikanova_alenka">
+		<addUniqueConstraint columnNames="USERS_LOGIN"
+			tableName="USERS" />
+	</changeSet>
+	
+	<changeSet id="insert_test_user_23112014" author="velikanova_alenka">
+		<insert tableName="USERS">
+			<column name="USERS_LOGIN">user</column>
+			<column name="USERS_PASSWORD">fbaf6205f15778a024b9e284462063d9df9c00d84b56b06a05aea2de47ba27a4
+			</column>
+			<column name="USERS_SALT">[B@1bc0b2eb</column>
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>
